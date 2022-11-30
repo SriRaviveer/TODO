@@ -1,0 +1,11 @@
+<div class="input-group mb-3 mt-3 w-100">
+  <form (submit)="add()">
+    <input #ravi11 autocomplete="off" id="ravi" [value]="ravi" type="text" placeholder="Enter a todo"
+      class="form-control" (input)="regex($event)" (keydown)="keyDown($event)" />
+  </form>
+  <div class="input-group-append">
+    <button (click)="add()" class="btn btn-secondary">Add Todo</button>
+  </div>
+</div>
+
+<app-todos (hai)="hao($event)" [todos]="todos"></app-todos>

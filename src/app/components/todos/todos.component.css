@@ -1,0 +1,9 @@
+.completedTodo {
+  color: darkgray;
+  text-decoration: line-through;
+  
+}
+.it{
+  display:none important;
+}
+

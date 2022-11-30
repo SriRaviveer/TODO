@@ -1,0 +1,61 @@
+<div style="max-height: 200px; overflow: auto !important;">
+  <ul class="list-group w-100">
+    <li (click)="changeTodoStatus(todo)" *ngFor="let todo of todoService.todosInService; let ravi1 = index"
+      class="list-group-item d-flex justify-content-between w-100">
+      <span>
+        <input [ngModel]="todo.isCompleted" type="checkbox" (change)="checkBox($event)" />
+      </span>
+      <span [ngClass]="{ completedTodo: todo.isCompleted }">
+        {{ todo.title }}
+      </span>
+      <span [ngClass]="{ completedTodo: todo.isCompleted }">
+        {{ todo.date | date }}
+      </span>
+      <span>
+        <fa-icon [icon]="faTrashAlt" (click)="deleteTodo(todo)"></fa-icon>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<button style="margin-bottom: 3%;" *ngIf="todoService.todosInService.length > 1" (click)="delete()"
+  class="btn btn-danger btn-sm mt-3">
+  <span>
+    <fa-icon [icon]="faTrashAlt"></fa-icon>
+  </span>
+  Delete all
+</button>
+<button style="margin-left: 10px; margin-bottom: 3%" *ngIf="todoService.todoCom.length>0" (click)="showCom()"
+  [ngClass]="{'btn-outline-primary': showComp , 'btn-primary ': !showComp}" class="btn btn-sm mt-3">
+  <span>
+    <fa-icon [icon]="faCheck"></fa-icon>
+  </span>
+  Completed Todos
+</button>
+<button style=" margin-left: 10px; margin-bottom: 3%;" *ngIf="todoService.todoCom.length>0" (click)="deleteComplted()"
+  class="btn btn-success btn-sm mt-3">
+  <span>
+    <fa-icon [icon]="faTrashAlt"></fa-icon>
+  </span>
+  Delete completed todos
+</button>
+
+<div *ngIf="!showComp" style= "max-height: 200px; overflow: auto !important;">
+  <ul class="list-group w-100">
+    <li (click)="changeTodoStatus(todo)" *ngFor="let todo of todoService.todoCom; let ravi1 = index"
+      class="list-group-item d-flex justify-content-between w-100">
+      <span>
+        <input [ngModel]="todo.isCompleted" type="checkbox" (change)="checkBox($event)" />
+      </span>
+      <span [ngClass]="{ completedTodo: todo.isCompleted }">
+        {{ todo.title }}
+      </span>
+      <span [ngClass]="{ completedTodo: todo.isCompleted }">
+        {{ todo.date | date }}
+      </span>
+      <span>
+        <fa-icon [icon]="faTrashAlt" (click)="deleteTodo(todo)"></fa-icon>
+      </span>
+    </li>
+  </ul>
+</div>
